@@ -151,9 +151,15 @@ Multi-platform educational application for practicing multiplication and divisio
 
 ### 7. Spring Integration Demos
 
-Monorepo with independent Spring Integration demonstrations. Structured with separate demos in their own subfolders, each can be built independently while sharing root Maven configuration and Kubernetes cluster infrastructure.
+Practical implementation of Enterprise Integration Patterns (EIP) using Spring Integration in Kubernetes environments. Demonstrates message-driven architecture through a four-application pipeline that processes quotes: fetching data, file polling, Kafka streaming with JSON transformation, and dual consumption patterns (file writing and PostgreSQL persistence).
 
-**Stack:** Java, Spring Integration, Spring Boot, Kubernetes (kind), Maven
+**Key Concepts:**
+- File processing with directory polling and content transformation
+- Event-driven systems using Kafka with declarative message routing
+- System connectivity via pre-built adapters (databases, files, messaging)
+- Message orchestration with splitting, aggregation, and error handling
+
+**Stack:** Java, Spring Integration, Spring Boot, Kafka, PostgreSQL, Kubernetes (kind), Maven
 
 **Repository:** [github.com/edwinbulter/spring-integration](https://github.com/edwinbulter/spring-integration)
 
