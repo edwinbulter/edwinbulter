@@ -18,7 +18,7 @@ The following projects (Demo 1-7) represent my ongoing selfstudy and exploration
 
 Scalable platform focused on defense-in-depth via Service Mesh and event-driven architecture.
 
-A fictional investment-banking application designed as a security testing sandbox and DevSecOps learning platform. The project demonstrates modern cloud-native security patterns and includes intentional vulnerabilities for testing security scanning tools. Key finding: automated tools found 0 vulnerabilities while manual review identified 8 vulnerabilities including 3 critical issues.
+A fictional investment-banking application designed as a security testing sandbox and DevSecOps learning platform. The project demonstrates modern cloud-native security patterns and includes intentional vulnerabilities for testing security scanning tools.
 
 **Key Features:**
 - Service mesh (Istio) for encrypted service-to-service communication (mTLS)
