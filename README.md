@@ -6,6 +6,12 @@ Cloud-native software engineer specializing in microservices architecture, Kuber
 
 ---
 
+## Recent Selfstudy Projects (December 2025 - Present)
+
+The following projects (Demo 1-7) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
+
+---
+
 ## Projects
 
 ### 1. MBD (My Bank Demo) – Cloud-Native Microservices
@@ -57,7 +63,7 @@ Full-stack serverless application for managing inspirational quotes, demonstrati
 - Email/password and Google OAuth authentication
 - Lambda optimization with SnapStart
 - Infrastructure-as-Code with Terraform
-- CI/CD with GitHub Actions using OIDC authentication (no long-lived credentials)
+- CI/CD with GitHub Actions using OIDC authentication (no long-lived AWS credentials stored - uses temporary tokens for deployment)
 - Multi-cloud deployment guides for AWS, Azure, and OVHcloud
 - Live demo environments for production and development
 
@@ -143,11 +149,23 @@ Multi-platform educational application for practicing multiplication and divisio
 
 ---
 
-### 7. AWS Serverless Event-Driven App
+### 7. Spring Integration Demos
 
-Design and implementation of a scalable, serverless backend architecture with fine-grained authorization (Fine-Grained Access Control). User management and authentication are configured via AWS Cognito. API security is designed with a custom Lambda Authorizer integrated with AWS Verified Permissions (Cedar policy engine) for central authorization logic.
+Monorepo with independent Spring Integration demonstrations. Structured with separate demos in their own subfolders, each can be built independently while sharing root Maven configuration and Kubernetes cluster infrastructure.
 
-Experimental project combining AWS serverless backend with multiple frontend implementations across different frameworks.
+**Stack:** Java, Spring Integration, Spring Boot, Kubernetes (kind), Maven
+
+**Repository:** [github.com/edwinbulter/spring-integration](https://github.com/edwinbulter/spring-integration)
+
+---
+
+## Previous Experience (2024)
+
+### AWS Serverless Event-Driven App
+
+This project was created in 2024 to build first step experience with AWS as an API backend for different frontends. It demonstrates the design and implementation of a scalable, serverless backend architecture with fine-grained authorization (Fine-Grained Access Control).
+
+**Purpose:** Experimental project to gain hands-on experience with AWS serverless services while exploring how a single backend API can serve multiple frontend frameworks.
 
 **Architecture:**
 - Python-based AWS Lambda functions
@@ -172,18 +190,6 @@ Experimental project combining AWS serverless backend with multiple frontend imp
 - Flutter Frontend: [github.com/edwinbulter/klik_flutter](https://github.com/edwinbulter/klik_flutter)
 - Angular Frontend: [github.com/edwinbulter/klik_angular](https://github.com/edwinbulter/klik_angular)
 - JavaFX Frontend: [github.com/edwinbulter/klik_javafx](https://github.com/edwinbulter/klik_javafx)
-
----
-
-## Additional Projects
-
-### Spring Integration Demos
-
-Monorepo with independent Spring Integration demonstrations. Structured with separate demos in their own subfolders, each can be built independently while sharing root Maven configuration and Kubernetes cluster infrastructure.
-
-**Stack:** Java, Spring Integration, Spring Boot, Kubernetes (kind), Maven
-
-**Repository:** [github.com/edwinbulter/spring-integration](https://github.com/edwinbulter/spring-integration)
 
 ---
 
