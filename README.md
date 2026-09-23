@@ -8,7 +8,7 @@ Cloud-native software engineer specializing in microservices architecture, Kuber
 
 ## Recent Selfstudy Projects (December 2025 - Present)
 
-The following projects (Demo 1-7) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
+The following projects (Demo 1-8) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
 
 ---
 
@@ -162,6 +162,24 @@ Practical implementation of Enterprise Integration Patterns (EIP) using Spring I
 **Stack:** Java, Spring Integration, Spring Boot, Kafka, PostgreSQL, Kubernetes (kind), Maven
 
 **Repository:** [github.com/edwinbulter/spring-integration](https://github.com/edwinbulter/spring-integration)
+
+---
+
+### 8. Quote K8s Python – Flask/HTMX Monolith
+
+A Python/Flask + HTMX port of the [quote-k8-java](https://github.com/edwinbulter/quote-k8-java) project, running in a local kind Kubernetes cluster.
+
+Unlike the Java original (a separate Quarkus API + React SPA + MongoDB), this version is a single Flask monolith: server-rendered HTML (Jinja2) with HTMX for interactivity, backed by SQLite on a PVC. One container, one pod, one Deployment.
+
+**Key Features:**
+- Quote-browsing app with per-user favourites and viewed-quote history
+- Admin screens for user and quote management
+- Server-rendered HTML with HTMX for interactivity (no separate frontend build)
+- SQLite persistence on a PersistentVolumeClaim
+
+**Stack:** Python, Flask, HTMX, Jinja2, SQLite, Kubernetes (kind)
+
+**Repository:** [github.com/edwinbulter/quote-k8s-python](https://github.com/edwinbulter/quote-k8s-python)
 
 ---
 
