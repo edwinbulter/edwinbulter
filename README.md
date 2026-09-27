@@ -8,7 +8,7 @@ Cloud-native software engineer specializing in microservices architecture, Kuber
 
 ## Recent Selfstudy Projects (December 2025 - Present)
 
-The following projects (Demo 1-8) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
+The following projects (Demo 1-9) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
 
 ---
 
@@ -180,6 +180,28 @@ Unlike the Java original (a separate Quarkus API + React SPA + MongoDB), this ve
 **Stack:** Python, Flask, HTMX, Jinja2, SQLite, Kubernetes (kind)
 
 **Repository:** [github.com/edwinbulter/quote-k8s-python](https://github.com/edwinbulter/quote-k8s-python)
+
+---
+
+### 9. Quote AWS Lambda Python – Serverless Flask/HTMX
+
+A port of the [quote-k8s-python](https://github.com/edwinbulter/quote-k8s-python) Flask/HTMX app from Kubernetes to a single AWS Lambda function, following the pattern of the [quote-lambda-tf](https://github.com/edwinbulter/quote-lambda-tf) Java backend but with one Lambda, one Terraform folder, and one AWS environment.
+
+Same app, same HTML/HTMX UI, same routes - the database and auth layers are what changed: a Lambda cannot host a local SQLite file, and concurrent Lambda instances need stateless, independently verifiable authentication.
+
+**Key Features:**
+- Single Flask Lambda behind API Gateway, serving server-rendered HTML with HTMX
+- DynamoDB persistence, including a quote-id counter and transactional like-count consistency
+- AWS Cognito authentication with JWT verification in the Lambda
+- Infrastructure-as-Code with Terraform (DynamoDB, Cognito, Lambda, API Gateway, IAM, CloudWatch)
+- Offline pytest suite using moto-mocked DynamoDB and Cognito
+- Design docs covering architecture, auth flow, DynamoDB schema, deployment, and expected AWS costs
+
+**Stack:** Python, Flask, HTMX, Jinja2, AWS Lambda, API Gateway, DynamoDB, Cognito, Terraform, pytest/moto, uv
+
+**Live Demo:** Personal deployment on API Gateway (no uptime guarantee)
+
+**Repository:** [github.com/edwinbulter/quote-aws-lambda-python](https://github.com/edwinbulter/quote-aws-lambda-python)
 
 ---
 
