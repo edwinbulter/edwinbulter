@@ -195,9 +195,10 @@ Same app, same HTML/HTMX UI, same routes - the database and auth layers are what
 - AWS Cognito authentication with JWT verification in the Lambda
 - Infrastructure-as-Code with Terraform (DynamoDB, Cognito, Lambda, API Gateway, IAM, CloudWatch)
 - Offline pytest suite using moto-mocked DynamoDB and Cognito
-- Design docs covering architecture, auth flow, DynamoDB schema, deployment, and expected AWS costs
+- Opt-in Playwright browser e2e test suite (`tests_e2e/`) covering auth, quote browsing (anonymous and authenticated), favourites, viewed-quote history, profile, role-based UI, and admin screens
+- Design docs covering architecture, auth flow, DynamoDB schema, deployment, expected AWS costs, and e2e testing setup/running/debugging
 
-**Stack:** Python, Flask, HTMX, Jinja2, AWS Lambda, API Gateway, DynamoDB, Cognito, Terraform, pytest/moto, uv
+**Stack:** Python, Flask, HTMX, Jinja2, AWS Lambda, API Gateway, DynamoDB, Cognito, Terraform, pytest/moto, Playwright, uv
 
 **Live Demo:** Personal deployment on API Gateway (no uptime guarantee)
 
