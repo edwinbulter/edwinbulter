@@ -8,7 +8,7 @@ Cloud-native software engineer specializing in microservices architecture, Kuber
 
 ## Recent Selfstudy Projects (December 2025 - Present)
 
-The following projects (Demo 1-9) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
+The following projects (Demo 1-10) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
 
 ---
 
@@ -203,6 +203,28 @@ Same app, same HTML/HTMX UI, same routes - the database and auth layers are what
 **Live Demo:** Personal deployment on API Gateway (no uptime guarantee)
 
 **Repository:** [github.com/edwinbulter/quote-aws-lambda-python](https://github.com/edwinbulter/quote-aws-lambda-python)
+
+---
+
+### 10. Nordic Wonen – Serverless Event-Driven Webshop (AWS)
+
+Architectural & QA automation proof of concept: serverless, event-driven webshop architecture on AWS with clean Python code, Infrastructure-as-Code, and a two-tier automated test strategy.
+
+A portfolio project styled as an IKEA-like lamp shop (not affiliated with IKEA; product images are hotlinked from ikea.com and product names are fictional). Focuses on event-driven decoupling, a single-table DynamoDB design, and thorough OWASP Top 10 coverage.
+
+**Key Features:**
+- Single Flask Lambda (via Mangum/ASGI) serving server-rendered HTML with HTMX, behind API Gateway with a custom domain (Route53 + ACM)
+- DynamoDB single-table design with a GSI for price-sorted catalog queries
+- Event-driven order processing: EventBridge custom bus fans out an `OrderPlaced` event to three SQS queues (payment, inventory, notification), each with its own DLQ for fault isolation
+- Comprehensive OWASP Top 10 (2025) security measures, documented per category
+- Infrastructure-as-Code with Terraform (modules per component, including custom domain and GitHub OIDC)
+- Two-tier automated testing: pytest/moto integration tests and Playwright E2E tests
+- CI/CD with GitHub Actions using OIDC authentication (no long-lived AWS credentials stored - uses temporary tokens for deployment)
+- Dependency and Python version management with uv
+
+**Stack:** Python, Flask, HTMX, Jinja2, Mangum, AWS Lambda, API Gateway, DynamoDB, EventBridge, SQS, Route53, ACM, Terraform, GitHub Actions, pytest/moto, Playwright, uv
+
+**Repository:** [github.com/edwinbulter/webshop-aws-python](https://github.com/edwinbulter/webshop-aws-python)
 
 ---
 
