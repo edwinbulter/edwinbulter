@@ -210,13 +210,14 @@ Same app, same HTML/HTMX UI, same routes - the database and auth layers are what
 
 Architectural & QA automation proof of concept: serverless, event-driven webshop architecture on AWS with clean Python code, Infrastructure-as-Code, and a two-tier automated test strategy.
 
-A portfolio project styled as an IKEA-like lamp shop (not affiliated with IKEA; product images are hotlinked from ikea.com and product names are fictional). Focuses on event-driven decoupling, a single-table DynamoDB design, and thorough OWASP Top 10 coverage.
+A portfolio project styled as an IKEA-like lamp shop (not affiliated with IKEA; product images are hotlinked from ikea.com and product names are fictional). Focuses on event-driven decoupling, a single-table DynamoDB design, thorough OWASP Top 10 coverage, and a GDPR/NIS2 compliance analysis.
 
 **Key Features:**
 - Single Flask Lambda (via Mangum/ASGI) serving server-rendered HTML with HTMX, behind API Gateway with a custom domain (Route53 + ACM)
 - DynamoDB single-table design with a GSI for price-sorted catalog queries
 - Event-driven order processing: EventBridge custom bus fans out an `OrderPlaced` event to three SQS queues (payment, inventory, notification), each with its own DLQ for fault isolation
 - Comprehensive OWASP Top 10 (2025) security measures, documented per category
+- [GDPR (AVG) and NIS2 (Cyberbeveiligingswet) compliance analysis](https://github.com/edwinbulter/webshop-aws-python/blob/main/docs/gdpr-nis2-compliance.md): personal data inventory, legal basis per processing activity, data subject rights implemented in the app (access, rectification, account deletion, JSON data export), retention periods, processors and EU-only data residency, plus a NIS2 applicability assessment - with remaining gaps (privacy statement, data breach protocol, automated retention cleanup) documented explicitly
 - Infrastructure-as-Code with Terraform (modules per component, including custom domain and GitHub OIDC)
 - Two-tier automated testing: pytest/moto integration tests and Playwright E2E tests
 - CI/CD with GitHub Actions using OIDC authentication (no long-lived AWS credentials stored - uses temporary tokens for deployment)
