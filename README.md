@@ -14,7 +14,30 @@ The following projects (Demo 1-10) represent my ongoing selfstudy and exploratio
 
 ## Projects
 
-### 1. MBD (My Bank Demo) – Cloud-Native Microservices
+### 1. Nordic Wonen – Serverless Event-Driven Webshop (AWS)
+
+Architectural & QA automation proof of concept: serverless, event-driven webshop architecture on AWS with clean Python code, Infrastructure-as-Code, and a two-tier automated test strategy.
+
+A portfolio project styled as an IKEA-like lamp shop (not affiliated with IKEA; product images are hotlinked from ikea.com and product names are fictional). Focuses on event-driven decoupling, a single-table DynamoDB design, thorough OWASP Top 10 coverage, and a GDPR/NIS2 compliance analysis.
+
+**Key Features:**
+- Single Flask Lambda (via Mangum/ASGI) serving server-rendered HTML with HTMX, behind API Gateway with a custom domain (Route53 + ACM)
+- DynamoDB single-table design with a GSI for price-sorted catalog queries
+- Event-driven order processing: EventBridge custom bus fans out an `OrderPlaced` event to three SQS queues (payment, inventory, notification), each with its own DLQ for fault isolation
+- Comprehensive OWASP Top 10 (2025) security measures, documented per category
+- [GDPR (AVG) and NIS2 (Cyberbeveiligingswet) compliance analysis](https://github.com/edwinbulter/webshop-aws-python/blob/main/docs/gdpr-nis2-compliance.md): personal data inventory, legal basis per processing activity, data subject rights implemented in the app (access, rectification, account deletion, JSON data export), retention periods, processors and EU-only data residency, plus a NIS2 applicability assessment - with remaining gaps (privacy statement, data breach protocol, automated retention cleanup) documented explicitly
+- Infrastructure-as-Code with Terraform (modules per component, including custom domain and GitHub OIDC)
+- Two-tier automated testing: pytest/moto integration tests and Playwright E2E tests
+- CI/CD with GitHub Actions using OIDC authentication (no long-lived AWS credentials stored - uses temporary tokens for deployment)
+- Dependency and Python version management with uv
+
+**Stack:** Python, Flask, HTMX, Jinja2, Mangum, AWS Lambda, API Gateway, DynamoDB, EventBridge, SQS, Route53, ACM, Terraform, GitHub Actions, pytest/moto, Playwright, uv
+
+**Repository:** [github.com/edwinbulter/webshop-aws-python](https://github.com/edwinbulter/webshop-aws-python)
+
+---
+
+### 2. MBD – Cloud-Native Microservices
 
 Scalable platform focused on defense-in-depth via Service Mesh and event-driven architecture.
 
@@ -34,7 +57,7 @@ A fictional investment-banking application designed as a security testing sandbo
 
 ---
 
-### 2. K8 Security – Zero-Trust Kubernetes Architecture
+### 3. K8s Security – Zero-Trust Kubernetes Architecture
 
 Seven independent Proof of Concepts demonstrating a layered security architecture for Kubernetes environments based on zero-trust principles: "Never trust, always verify."
 
@@ -53,7 +76,7 @@ Seven independent Proof of Concepts demonstrating a layered security architectur
 
 ---
 
-### 3. Multi-Cloud Quote App (AWS, Azure, OVH)
+### 4. Multi-Cloud Quote App (AWS, Azure, OVH)
 
 Secure multi-cloud app with JWT/OAuth authentication across cloud providers.
 
@@ -65,6 +88,7 @@ Full-stack serverless application for managing inspirational quotes, demonstrati
 - Infrastructure-as-Code with Terraform
 - CI/CD with GitHub Actions using OIDC authentication (no long-lived AWS credentials stored - uses temporary tokens for deployment)
 - Multi-cloud deployment guides for AWS, Azure, and OVHcloud
+- Multi-language backends: Java, C# and Go
 - Live demo environments for production and development
 
 **Stack:** React 18, TypeScript, Vite, TailwindCSS, Java 21 Lambda, API Gateway, DynamoDB, S3, CloudFront, Terraform, GitHub Actions
@@ -73,7 +97,7 @@ Full-stack serverless application for managing inspirational quotes, demonstrati
 
 ---
 
-### 4. Azure Kubernetes Service (AKS) Deployment
+### 5. Azure Kubernetes Service (AKS) Deployment
 
 Architecture, setup and configuration of AKS cluster including JWT and identity management.
 
@@ -98,7 +122,7 @@ Experimental learning project demonstrating .NET application deployment to Azure
 
 ---
 
-### 5. Hybrid Kubernetes Engine (Scaleway & Kind)
+### 6. Hybrid Kubernetes Engine (Scaleway & Kind)
 
 Integration of cloud (Scaleway) and local (Kind) Kubernetes clusters.
 
@@ -122,7 +146,7 @@ Cloud-agnostic Kubernetes implementation of a quote application, refactored from
 
 ---
 
-### 6. Mobile App Development
+### 7. Mobile App Development
 
 Native iOS/Android apps with focus on clean code and UX.
 
@@ -149,7 +173,7 @@ Multi-platform educational application for practicing multiplication and divisio
 
 ---
 
-### 7. Spring Integration Demos
+### 8. Spring Integration Demos
 
 Practical implementation of Enterprise Integration Patterns (EIP) using Spring Integration in Kubernetes environments. Demonstrates message-driven architecture through a four-application pipeline that processes quotes: fetching data, file polling, Kafka streaming with JSON transformation, and dual consumption patterns (file writing and PostgreSQL persistence).
 
@@ -165,7 +189,7 @@ Practical implementation of Enterprise Integration Patterns (EIP) using Spring I
 
 ---
 
-### 8. Quote K8s Python – Flask/HTMX Monolith
+### 9. Quote K8s Python – Flask/HTMX Monolith
 
 A Python/Flask + HTMX port of the [quote-k8-java](https://github.com/edwinbulter/quote-k8-java) project, running in a local kind Kubernetes cluster.
 
@@ -183,7 +207,7 @@ Unlike the Java original (a separate Quarkus API + React SPA + MongoDB), this ve
 
 ---
 
-### 9. Quote AWS Lambda Python – Serverless Flask/HTMX
+### 10. Quote AWS Lambda Python – Serverless Flask/HTMX
 
 A port of the [quote-k8s-python](https://github.com/edwinbulter/quote-k8s-python) Flask/HTMX app from Kubernetes to a single AWS Lambda function, following the pattern of the [quote-lambda-tf](https://github.com/edwinbulter/quote-lambda-tf) Java backend but with one Lambda, one Terraform folder, and one AWS environment.
 
@@ -203,29 +227,6 @@ Same app, same HTML/HTMX UI, same routes - the database and auth layers are what
 **Live Demo:** Personal deployment on API Gateway (no uptime guarantee)
 
 **Repository:** [github.com/edwinbulter/quote-aws-lambda-python](https://github.com/edwinbulter/quote-aws-lambda-python)
-
----
-
-### 10. Nordic Wonen – Serverless Event-Driven Webshop (AWS)
-
-Architectural & QA automation proof of concept: serverless, event-driven webshop architecture on AWS with clean Python code, Infrastructure-as-Code, and a two-tier automated test strategy.
-
-A portfolio project styled as an IKEA-like lamp shop (not affiliated with IKEA; product images are hotlinked from ikea.com and product names are fictional). Focuses on event-driven decoupling, a single-table DynamoDB design, thorough OWASP Top 10 coverage, and a GDPR/NIS2 compliance analysis.
-
-**Key Features:**
-- Single Flask Lambda (via Mangum/ASGI) serving server-rendered HTML with HTMX, behind API Gateway with a custom domain (Route53 + ACM)
-- DynamoDB single-table design with a GSI for price-sorted catalog queries
-- Event-driven order processing: EventBridge custom bus fans out an `OrderPlaced` event to three SQS queues (payment, inventory, notification), each with its own DLQ for fault isolation
-- Comprehensive OWASP Top 10 (2025) security measures, documented per category
-- [GDPR (AVG) and NIS2 (Cyberbeveiligingswet) compliance analysis](https://github.com/edwinbulter/webshop-aws-python/blob/main/docs/gdpr-nis2-compliance.md): personal data inventory, legal basis per processing activity, data subject rights implemented in the app (access, rectification, account deletion, JSON data export), retention periods, processors and EU-only data residency, plus a NIS2 applicability assessment - with remaining gaps (privacy statement, data breach protocol, automated retention cleanup) documented explicitly
-- Infrastructure-as-Code with Terraform (modules per component, including custom domain and GitHub OIDC)
-- Two-tier automated testing: pytest/moto integration tests and Playwright E2E tests
-- CI/CD with GitHub Actions using OIDC authentication (no long-lived AWS credentials stored - uses temporary tokens for deployment)
-- Dependency and Python version management with uv
-
-**Stack:** Python, Flask, HTMX, Jinja2, Mangum, AWS Lambda, API Gateway, DynamoDB, EventBridge, SQS, Route53, ACM, Terraform, GitHub Actions, pytest/moto, Playwright, uv
-
-**Repository:** [github.com/edwinbulter/webshop-aws-python](https://github.com/edwinbulter/webshop-aws-python)
 
 ---
 
@@ -265,4 +266,4 @@ This project was created in 2024 to build first step experience with AWS as an A
 
 ## Contact
 
-For more information about these projects or collaboration opportunities, please connect via [LinkedIn](https://www.linkedin.com/in/edwin-bulter-68b29015/) or visit my [GitHub profile](https://github.com/edwinbulter).
+For more information about these projects or collaboration opportunities, please connect via [LinkedIn](https://www.linkedin.com/in/edwin-bulter-68b29015/).
