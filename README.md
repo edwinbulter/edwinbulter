@@ -8,7 +8,7 @@ Cloud-native software engineer specializing in microservices architecture, Kuber
 
 ## Recent Selfstudy Projects (December 2025 - Present)
 
-The following projects (Demo 1-10) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
+The following projects (Demo 1-11) represent my ongoing selfstudy and exploration of modern cloud-native technologies, security patterns, and distributed systems architecture.
 
 ---
 
@@ -37,7 +37,31 @@ A portfolio project styled as an IKEA-like lamp shop (not affiliated with IKEA; 
 
 ---
 
-### 2. MBD – Cloud-Native Microservices
+### 2. BankSim – Zero-Trust Internet Banking Simulation (Kubernetes)
+
+Internet banking simulation for 10 fictional households with about five years of realistic transaction history. An admin can move the simulation date; all account holders then see their accounts as if it were that day.
+
+Built as a zero-trust, security-first reference architecture running in its own namespace in a local kind cluster, with functional and technical design documents (in Dutch) covering architecture, API, data model, security, OWASP Top 10:2025, resilience, testing and deployment.
+
+**Key Features:**
+- Customer screens: account overview, payment account with paged transactions and advanced search, payments to known contacts with a confirmation step (no overdraft), and a savings account with 3% interest calculated daily and credited monthly
+- Admin screens: overview of all account holders, read-only transaction inspection and setting the simulation date
+- Backend-for-Frontend (Spring Cloud Gateway) handling OIDC login with Keycloak, keeping tokens server-side behind an encrypted HttpOnly cookie session, with rate limiting
+- Zero trust: JWT validation in the API, mTLS between all components with a dedicated BankSim CA, and default-deny NetworkPolicies
+- Atomic transfers through a single ledger service, with `BigDecimal`/`NUMERIC(19,2)` amounts end to end
+- OWASP Top 10:2025 measures documented per category (A01–A10)
+- Resilience: starts without database or Keycloak, timeouts, circuit breakers and idempotent payments
+- Deterministic fake data generator for 10 households (October 2021 – December 2026)
+- Backend tests: unit, integration (Testcontainers), architecture, contract and mutation tests; Playwright E2E suite covering all scenarios in Chromium, Firefox and WebKit
+- Supply chain and CI: GitHub Actions running OpenAPI contract checks, OWASP Dependency-Check, SBOMs, Trivy image scans and the E2E suite in an ephemeral kind cluster; images and Actions pinned by digest, kept up to date by Renovate
+
+**Stack:** Java 21, Spring Boot, Spring Cloud Gateway, Keycloak, PostgreSQL, Flyway, Angular, TypeScript, Playwright, Helm, Kubernetes (kind), ingress-nginx, GitHub Actions, Trivy
+
+**Repository:** [github.com/edwinbulter/banksim](https://github.com/edwinbulter/banksim)
+
+---
+
+### 3. MBD – Cloud-Native Microservices
 
 Scalable platform focused on defense-in-depth via Service Mesh and event-driven architecture.
 
@@ -57,7 +81,7 @@ A fictional investment-banking application designed as a security testing sandbo
 
 ---
 
-### 3. K8s Security – Zero-Trust Kubernetes Architecture
+### 4. K8s Security – Zero-Trust Kubernetes Architecture
 
 Seven independent Proof of Concepts demonstrating a layered security architecture for Kubernetes environments based on zero-trust principles: "Never trust, always verify."
 
@@ -76,7 +100,7 @@ Seven independent Proof of Concepts demonstrating a layered security architectur
 
 ---
 
-### 4. Multi-Cloud Quote App (AWS, Azure, OVH)
+### 5. Multi-Cloud Quote App (AWS, Azure, OVH)
 
 Secure multi-cloud app with JWT/OAuth authentication across cloud providers.
 
@@ -97,7 +121,7 @@ Full-stack serverless application for managing inspirational quotes, demonstrati
 
 ---
 
-### 5. Azure Kubernetes Service (AKS) Deployment
+### 6. Azure Kubernetes Service (AKS) Deployment
 
 Architecture, setup and configuration of AKS cluster including JWT and identity management.
 
@@ -122,7 +146,7 @@ Experimental learning project demonstrating .NET application deployment to Azure
 
 ---
 
-### 6. Hybrid Kubernetes Engine (Scaleway & Kind)
+### 7. Hybrid Kubernetes Engine (Scaleway & Kind)
 
 Integration of cloud (Scaleway) and local (Kind) Kubernetes clusters.
 
@@ -146,7 +170,7 @@ Cloud-agnostic Kubernetes implementation of a quote application, refactored from
 
 ---
 
-### 7. Mobile App Development
+### 8. Mobile App Development
 
 Native iOS/Android apps with focus on clean code and UX.
 
@@ -173,7 +197,7 @@ Multi-platform educational application for practicing multiplication and divisio
 
 ---
 
-### 8. Spring Integration Demos
+### 9. Spring Integration Demos
 
 Practical implementation of Enterprise Integration Patterns (EIP) using Spring Integration in Kubernetes environments. Demonstrates message-driven architecture through a four-application pipeline that processes quotes: fetching data, file polling, Kafka streaming with JSON transformation, and dual consumption patterns (file writing and PostgreSQL persistence).
 
@@ -189,7 +213,7 @@ Practical implementation of Enterprise Integration Patterns (EIP) using Spring I
 
 ---
 
-### 9. Quote K8s Python – Flask/HTMX Monolith
+### 10. Quote K8s Python – Flask/HTMX Monolith
 
 A Python/Flask + HTMX port of the [quote-k8-java](https://github.com/edwinbulter/quote-k8-java) project, running in a local kind Kubernetes cluster.
 
@@ -207,7 +231,7 @@ Unlike the Java original (a separate Quarkus API + React SPA + MongoDB), this ve
 
 ---
 
-### 10. Quote AWS Lambda Python – Serverless Flask/HTMX
+### 11. Quote AWS Lambda Python – Serverless Flask/HTMX
 
 A port of the [quote-k8s-python](https://github.com/edwinbulter/quote-k8s-python) Flask/HTMX app from Kubernetes to a single AWS Lambda function, following the pattern of the [quote-lambda-tf](https://github.com/edwinbulter/quote-lambda-tf) Java backend but with one Lambda, one Terraform folder, and one AWS environment.
 
